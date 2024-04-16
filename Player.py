@@ -22,6 +22,9 @@ class Player(Creature):
 
     #
     def atk(self, diff):
+        diffs = ['easy', 'med', 'hard', 'ntmare']
+        if diff in diffs:
+            lidk bruj like do some shii or whatevs
         #Assigning question and answer vars
         q_num = random.randint(1,5)
         question = Questions.diff[q_num].value()
