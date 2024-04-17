@@ -100,7 +100,7 @@ class Player(Creature.Creature):
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0:len(user_ans)]:
-                    print(f"{answer}?.. \n\t== Correct!==")
+                    print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
@@ -134,7 +134,7 @@ class Player(Creature.Creature):
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0:len(user_ans)]:
-                    print(f"{answer}?.. \n\t== Correct!==")
+                    print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
@@ -168,7 +168,7 @@ class Player(Creature.Creature):
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0:len(user_ans)]:
-                    print(f"{answer}?.. \n\t== Correct!==")
+                    print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True) # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
