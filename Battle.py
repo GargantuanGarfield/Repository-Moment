@@ -3,13 +3,28 @@ import random  # Nicholas: implement chance in moves
 import Questions
 import Player
 Option_battle_list = ['Attack', 'Block']
-Quiz_Types = ["MC", "JEOPARDY", "FITB", "TOF"]  # Nicholas: List of the quiz types for the if/else statements
-ehp = 50
-php = 50
+Quiz_Types = ["MC", "JEOPARDY", "FITB", "TOF",]  # Nicholas: List of the quiz types for the if/else statements
+ehp = 50 # Nicholas: REPLACE WITH THE CLASS ENEMY HP
+php = 50 # Nicholas: REPLACE WITH THE CLASS PLAYER HP
 edmg = 1
 pdmg = 1
+
+rannum = random.randint(0,20) # Replace in the actual code with Player.hit_rolling
+if rannum == 20:
+    print("CRITICAL HIT")
+    time.sleep(2)
+    num = 3
+elif rannum >= 2:
+    print("The attack connects")
+    time.sleep(2)
+    num = 1
+else:
+    print("The attack misses")
+    time.sleep(2)
+    num = 2
+
 def battling(enemy, player):
-    global ehp, php
+    global ehp, php # Nicholas: REPLACE WITH THE CLASS ENEMY HP AND PLAYER HP
     battle_choice = input(f'Choose what to do {Option_battle_list}: ').title()
     while ehp > 0 and php > 0:  # Nicholas: code runs until player or enemy dies
 
@@ -23,9 +38,10 @@ def battling(enemy, player):
                 for room in Quiz_Types:
                     print('[' + room[0] + ']' + room[1:] + ": ", end="")
                 move = input("\n\tInput What you would like to do (M/J/F/T): ").upper()
-                for i in range(len(Quiz_Types)):
+
+                for i in range(len(Quiz_Types)):  # Nicholas: Repurposed code form Gavin
                     if len(move) > 1:
-                        if move == Quiz_Types[i][0:len(move)].upper():
+                        if move == Quiz_Types[i][0:len(move)].upper():  # Checks if the Input is part of the answer
                             move = Quiz_Types[i]
                             if move == "TOF":
                                 print("easy")
@@ -99,6 +115,7 @@ def battling(enemy, player):
                 php -= edmg
                 print(ehp)
                 print(php)
+                print()
                 battle_choice = input(f'Choose what to do {Option_battle_list}: ').title()
 
         elif battle_choice == 'Block':

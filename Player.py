@@ -152,6 +152,3 @@ def hit_rolling(status):
             print("The attack misses")
             sleep(2)
             return 0
-
-play = Player('Balls', 7, 12, 100)
-play.attack('TFQ')
