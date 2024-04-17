@@ -12,12 +12,12 @@ purple_folder = {'name': 'Purple Folder', 'atk': 7, 'effect': 'DAMAGE'}
 
 # CLOTHING
 jester_hat = {'name': "Jester Hat", 'armor': 2, 'effect': 'ARMOR'}
-business_casual = {'name': 'Business Casual Outfit', 'armor': 5, 'effect': 'ARMOR'}
+signal_tee = {'name': 'NetworkChuck Signal T-Shirt', 'armor': 5, 'effect': 'ARMOR'}
 business_suit = {'name': 'Business Suit', 'armor': 10, 'effect': 'ARMOR'}
 fursuit = {'name': 'Fursuit', 'armor': 15, 'effect': 'ARMOR'}
 
 all_items = [on_call_coffee, default_route_coffee, two_hundred_ok_coffee, sudo_coffee, plastic_knife, cooked_pan,
-             wifi_cable, purple_folder, jester_hat, business_casual, business_suit, fursuit]
+             wifi_cable, purple_folder, jester_hat, signal_tee, business_suit, fursuit]
 
 
 
