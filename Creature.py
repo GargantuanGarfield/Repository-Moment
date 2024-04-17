@@ -17,7 +17,7 @@ class Creature:
         return f'This is a townsperson taken over by a {self.name} parasite, its a {self.type} type parasite'
 
     def stats(self):
-        return f"{self.name}:\n" + '-' * len(self.name) + f"\n\tatk - {self.atk}\n\tdef - {self.deff}\n\thp - {self.hp}"
+        print(f"{self.name}:\n" + '-' * len(self.name) + f"\n\tatk - {self.atk}\n\tdef - {self.deff}\n\thp - {self.hp}")
 
     def block(self):
         rannum = random.randrange(0,21)

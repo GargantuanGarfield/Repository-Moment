@@ -19,8 +19,8 @@ class Player(Creature.Creature):
 
     # prints player info
     def stats(self):
-        words = super().stats(self)
-        return (words + f"Equipped Weapon - {self.weapon}\n\tEquipped armor - {self.armor}")
+        super().stats(self)
+        print(f"Equipped Weapon - {self.weapon}\n\tEquipped armor - {self.armor}")
 
     #ATTACK METHOD
     def attack(self, diff):
