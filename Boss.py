@@ -18,7 +18,17 @@ class Boss(Creature.Creature):
         return "It doesn't seem very friendly"
 
     def stats(self):
-        print(f"{self.name}\n{'-' * len(self.name)}\n\tAtk - UNMEASURABLE\n\tdef - WAY TOO MUCH\n\tHP - HES LITERALLY IMMORTAL\n\tStatus - ROYALLY PISSED OFF\n\n\tLove - NOT Lookin great gonna be honest,\n\t\t it might just hurt less to give up now.")
+        print(f"{self.name}\n{'-' * len(self.name)}\n\tAtk - UNMEASURABLE\n\tdef - WAY TOO MUCH\n\tHP - HES LITERALLY IMMORTAL\n\tStatus - ROYALLY PISSED OFF\n\n\tLove - NOT Lookin great gonna be honest,\n\t\t"
+              f"  it might just hurt less to give up now.\n\t\t  Im sorry fella and/or fillet")
+
+    def attack(self):
+        pass
+
+    def spec_atk(self):
+        pass
+
+    def block(self):
+        pass
 
 benis = Boss("GREAT EXPLOSION MURDER GOD PYTHON",0,0,0,0,0)
 benis.stats()

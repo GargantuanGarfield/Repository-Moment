@@ -183,13 +183,25 @@ class Player(Creature.Creature):
                     success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
                     return success
 
-
-            # Return statements and finally hit/miss calculations
-
-
         # If Difficulty is invalid
         else:
             print("Difficulty Invalid")
+
+    # FINALLY MOVING ON MY LORD
+    # Blocking method, alternative to attacking
+    def block(self):
+        print("You brace yourself to block the attack...")
+        sleep(1.2)
+        rannum = random.randrange(0, 21)
+        if rannum <= 17:
+            print("You blocked the attack")
+            return True
+        else:
+            print("The attack breaks through! OW")
+            return False
+
+
+
 
 #Function that decides hit chance
 def hit_rolling(status):
