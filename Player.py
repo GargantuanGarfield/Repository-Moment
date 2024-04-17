@@ -51,18 +51,23 @@ class Player(Creature.Creature):
                 # Input
                 print("\t\t-- True or false? -- ATTACK\n")
                 print(f"(T/F) {question}")
-                user_ans = input('\t').lower()
+                user_ans = input('\t - ').lower().strip
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == 't' or user_ans == answer[0:len(user_ans)]:
-                    print("Correct!")
+                    print(f"{answer}?.. \n\t== Correct!==")
                     sleep(.3)
-                    success = hit_rolling(True)
+                    success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
-                    print("Incorrect..")
-                    success = hit_rolling(False)
+                    print(f"{user_ans}?..\n\tIncorrect..")
+                    slep(1.4)
+                    print(f"The correct answer was {answer}..")
+                    sleep(.98)
+                    print("You feel your body weaken and your focus falters...")
+                    sleep(1.5)
+                    success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
                     return success
 
             # Medium difficulty question setup, prompt and checking
@@ -91,58 +96,91 @@ class Player(Creature.Creature):
                         print(f"{num + 1}.) {bad_choices[num]}")
                         question_choices.remove(bad_choices[num])
                 print(answer)
-                user_ans = input('\t - ').lower()
+                user_ans = input('\t - ').lower().strip()
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0:len(user_ans)]:
-                    print("Correct!")
+                    print(f"{answer}?.. \n\t== Correct!==")
                     sleep(1.5)
-                    success = hit_rolling(True)
+                    success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
-                    print("Incorrect..")
+                    print(f"{user_ans}?..\n\tIncorrect..")
+                    slep(1.4)
+                    print(f"The correct answer was {answer}..")
+                    sleep(.98)
+                    print("You feel your body weaken and your focus falters...")
                     sleep(1.5)
-                    success = hit_rolling(False)
+                    success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
                     return success
-
 
             # HARD difficulty question setup, prompt and checking
             # Fill in the black Questions
             elif diff == FITB:
 
-                # 
+                # Question formatting and stuff
+                print("\t\t -- Fill in the blank -- ATTACK")
+                print("Word Bank:")
+                for q in range(1,6):
+                    for answers in FITB[q].values():
+                        if q < 5:
+                            print(answers, end=", ")
+                        else:
+                            print(answers + '\n')
+
+                print(question)
+                user_ans = input("\t - ").lower().strip()
 
                 # Correct/Incorrect answer hit calculations
-                if user_ans == answer:
-                    print("Correct!")
+                if user_ans == answer[0:len(user_ans)]:
+                    print(f"{answer}?.. \n\t== Correct!==")
                     sleep(1.5)
-                    success = hit_rolling(True)
+                    success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
-                    print("Incorrect..")
+                    print(f"{user_ans}?..\n\tIncorrect..")
+                    slep(1.4)
+                    print(f"The correct answer was {answer}..")
+                    sleep(.98)
+                    print("You feel your body weaken and your focus falters...")
                     sleep(1.5)
-                    success = hit_rolling(False)
+                    success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
                     return success
 
 
             # NIGHTMARE difficulty question setup, prompt and checking
             # Jeopardy Questions
             else:
-                # TODO: KILL YOURSELF
+
+                #Question formatting : this ones easy... I hope
+                print("A dilapidated and rotting Alex Trebeck appears in front of you and you feel locked in place..")
+                sleep(1.12)
+                print("A podium with your name on it appears in front of you and the zombie Trebeck stares at you as if to say..\n")
+                sleep(2)
+                print("Python for 300..", end=" ")
+                sleep(.9)
+                print(f"Okay {self.name}, I ask you..\n")
+                sleep(1.5)
+                print(question)
+                user_ans = input("\tWhat is? - ").lower().strip()
 
                 # Correct/Incorrect answer hit calculations
-                if user_ans == answer:
-                    print("Correct!")
+                if user_ans == answer[0:len(user_ans)]:
+                    print(f"{answer}?.. \n\t== Correct!==")
                     sleep(1.5)
-                    success = hit_rolling(True)
+                    success = hit_rolling(True) # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
-                    print("Incorrect..")
+                    print(f"{user_ans}?..\n\tIncorrect..")
+                    slep(1.4)
+                    print(f"The correct answer was {answer}..")
+                    sleep(.98)
+                    print("You feel your body weaken and your focus falters...")
                     sleep(1.5)
-                    success = hit_rolling(False)
+                    success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
                     return success
 
 
@@ -175,7 +213,7 @@ def hit_rolling(status):
             sleep(2)
             return 2
         elif rannum >= 8:
-            print("The attack grazes the enemy")
+            print("The attack grazes the enemy\n\tHalf Damage")
             sleep(2)
             return 2
         else:
@@ -183,5 +221,3 @@ def hit_rolling(status):
             sleep(2)
             return 0
 
-play = Player()
-play.attack('MCQ')
