@@ -5,7 +5,7 @@
 import random
 
 class Creature:
-    def __init__(self, name, type, atk, deff, hp, status):
+    def __init__(self, name='', type='', atk=0, deff=0, hp=0, status=''):
         self.name = name
         self.type = type
         self.atk = atk
