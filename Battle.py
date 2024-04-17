@@ -3,7 +3,7 @@ import random  # Nicholas: implement chance in moves
 import Questions
 import Player
 Option_battle_list = ['Attack', 'Block']
-Quiz_Types = ["MC", "JEOPARDY", "FITB", "TOF",]  # Nicholas: List of the quiz types for the if/else statements
+Quiz_Types = ["MC", "JEOPARDY", "FITB", "TOF"]  # Nicholas: List of the quiz types for the if/else statements
 ehp = 50 # Nicholas: REPLACE WITH THE CLASS ENEMY HP
 php = 50 # Nicholas: REPLACE WITH THE CLASS PLAYER HP
 edmg = 1
