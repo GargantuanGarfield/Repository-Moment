@@ -3,7 +3,7 @@
 # 4/16/24
 # Player Subclass
 import random
-from Questions import TFQ, MCQ, FITB, JEOPARDY
+from Questions import TFQ, MCQ, FITB, JEOPARDY, choices
 import Creature
 from time import sleep
 
@@ -22,7 +22,7 @@ class Player(Creature.Creature):
         words = super().stats(self)
         return (words + f"Equipped Weapon - {self.weapon}\n\tEquipped armor - {self.armor}")
 
-    #
+    #ATTACK METHOD
     def attack(self, diff):
         diff_names = {'TFQ': TFQ, 'MCQ': MCQ, 'JEOPARDY': JEOPARDY, 'FITB': FITB}
         for name in diff_names.items():
@@ -69,7 +69,11 @@ class Player(Creature.Creature):
             elif diff == MCQ:
 
                 print("\tMultiple choice:\n")
-                print(question)
+                print(question + "????!?!??!")
+                for num in range(4):
+                    rannum = random.randint(0,3)
+                    if num == rannum:
+                        print(f"{}")
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer:
@@ -153,5 +157,3 @@ def hit_rolling(status):
             sleep(2)
             return 0
 
-play = Player('Balls', 7, 12, 100)
-play.attack('TFQ')
