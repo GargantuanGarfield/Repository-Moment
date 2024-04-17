@@ -31,8 +31,9 @@ class Player(Creature.Creature):
             else:
                 pass
 
+
         # If the difficulty is valid, executes the attack method
-        if diff == TFQ:
+        if type(diff) != 'dict':
 
             # Assigning question and answer vars
             q_num = random.randint(1, 5)
@@ -48,7 +49,7 @@ class Player(Creature.Creature):
             if diff == TFQ:
 
                 # Input
-                print("\t\t-- True or false? -- \n")
+                print("\t\t-- True or false? -- ATTACK\n")
                 print(f"(T/F) {question}")
                 user_ans = input('\t').lower()
 
@@ -67,22 +68,41 @@ class Player(Creature.Creature):
             # Medium difficulty question setup, prompt and checking
             # MC questions
             elif diff == MCQ:
+                #Assigning stuff
+                question_choices = choices
+                question_choices.remove(answer)
+                bad_choices = []
+                for i in range(4):
+                    choice = random.choice(question_choices)
+                    while choice in bad_choices:
+                        choice = random.choice(question_choices)
+                    bad_choices.append(choice)
 
-                print("\tMultiple choice:\n")
-                print(question + "????!?!??!")
+                #Question Formatting and input
+
+                print(question_choices)
+                print("\t\t-- Multiple Choice -- ATTACK\n")
+                print(question)
+                rannum = random.randint(1, 4)
                 for num in range(4):
-                    rannum = random.randint(0,3)
-                    if num == rannum:
-                        print(f"{}")
+                    if (num + 1) == rannum:
+                        print(f"{num + 1}.) {answer}")
+                    else:
+                        print(f"{num + 1}.) {bad_choices[num]}")
+                        question_choices.remove(bad_choices[num])
+                print(answer)
+                user_ans = input('\t - ').lower()
 
                 # Correct/Incorrect answer hit calculations
-                if user_ans == answer:
+                if user_ans == answer[0:len(user_ans)]:
                     print("Correct!")
+                    sleep(1.5)
                     success = hit_rolling(True)
                     return success
 
                 else:
                     print("Incorrect..")
+                    sleep(1.5)
                     success = hit_rolling(False)
                     return success
 
@@ -91,14 +111,18 @@ class Player(Creature.Creature):
             # Fill in the black Questions
             elif diff == FITB:
 
+                # 
+
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer:
                     print("Correct!")
+                    sleep(1.5)
                     success = hit_rolling(True)
                     return success
 
                 else:
                     print("Incorrect..")
+                    sleep(1.5)
                     success = hit_rolling(False)
                     return success
 
@@ -111,11 +135,13 @@ class Player(Creature.Creature):
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer:
                     print("Correct!")
+                    sleep(1.5)
                     success = hit_rolling(True)
                     return success
 
                 else:
                     print("Incorrect..")
+                    sleep(1.5)
                     success = hit_rolling(False)
                     return success
 
@@ -157,3 +183,5 @@ def hit_rolling(status):
             sleep(2)
             return 0
 
+play = Player()
+play.attack('MCQ')
