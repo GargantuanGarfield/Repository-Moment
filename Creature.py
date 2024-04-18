@@ -20,6 +20,8 @@ class Creature:
         print(f"{self.name}:\n" + '-' * len(self.name) + f"\n\tatk - {self.atk}\n\tdef - {self.deff}\n\thp - {self.hp}")
 
     def block(self):
+        print("The enemy readies itself..")
+        sleep(.9)
         rannum = random.randrange(0,21)
         if rannum <= 18:
             print("It blocks the attack")
@@ -29,6 +31,8 @@ class Creature:
             return False
 
     def attack(self):
+        print("The enemy prepares to attack..")
+        sleep(.9)
         rannum = random.randrange(0,21)
         if rannum == 20:
             print("CRITICAL HIT")
