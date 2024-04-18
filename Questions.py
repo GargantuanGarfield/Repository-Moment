@@ -17,14 +17,16 @@ TFQ = {1: {" The \"int()\" function in Python can convert a string containing a 
 
 JEOPARDY = {1: {"In Python, this type of method is automatically called when an instance of a class is created.":
             "init"}, 2: {"This type of Python exception occurs when an invalid operation is performed on an object, "
-            "such as dividing by zero or accessing an index out of range.": "typeerror"}, 3:
-            {"a block of code which only runs when it is called": "Function"}, 4: {"A loop based on a conditional":
+            "such as dividing by zero or accessing an index out of range.": "type error"}, 3:
+            {"a block of code which only runs when it is called": "function"}, 4: {"A loop based on a conditional":
             "while loop"}, 5: {"This syntax in Python is used to create a list through a for loop on a single line":
             "list comprehension"}}
 
 FITB = {1: {"In Python, the ______ statement is used to handle exceptions and perform error handling."
-            : "try/accept"}, 2: {"Python's built-in function ______() is used to convert a string to an integer."
+            : "try/except"}, 2: {"Python's built-in function ______() is used to convert a string to an integer."
             : "int"}, 3: {"The ______() method in Python is used to remove "
-            "the last element from a list and return it.": "int"}, 4: {"Python's ______() function is used to determine "
+            "the last element from a list and return it.": "pop"}, 4: {"Python's ______() function is used to determine "
             "the length of a sequence, such as a list or a string.": "len"}, 5: {"The ______() method in Python is used"
             " to add elements to the end of a list.": "append"}}
+
+
