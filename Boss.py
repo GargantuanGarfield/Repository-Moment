@@ -77,5 +77,4 @@ class Boss(Creature.Creature):
             print("The block fails...")
             return False
 
-benis = Boss("GREAT EXPLOSION MURDER GOD PYTHON",0,0,0,0,0)
-benis.spec_atk()
+
