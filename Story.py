@@ -7,9 +7,10 @@ from time import sleep
 import Main
 import Filesaver
 
-
 # Will Vanderploeg:
 # Displays the intro one line at a time using the intro.txt file
+
+
 def intro():
     year = random.randrange(224, 8427)
     print(f"\n\nThe year is {year}")
@@ -56,4 +57,4 @@ def game_over(score, name):
             print("\nTry again? (y/n)")
             again = input("\t").lower()
 
-game_over()
+game_over(90, "Nicholas")

@@ -1,6 +1,8 @@
 # Will Vanderploeg
 import pickle
 import os
+
+
 # Sorts, then saves the highscore in a binary file
 def savehighscore(score, name, names, scores_list):
     try:
@@ -8,6 +10,8 @@ def savehighscore(score, name, names, scores_list):
         scores_list.append(score)
         names.append(name)
         score_table_temp = {names[i]: scores_list[i] for i in range(len(names))}
+        print(score_table_temp)
+        print(scores_list)
         scores_list.sort(reverse=True)
         scores_table = {}
         for value in scores_list:
@@ -22,6 +26,7 @@ def savehighscore(score, name, names, scores_list):
     except FileNotFoundError:
         print("File not found")
 
+
 # Reads a binary file to retrieve past highscores
 # It will detect if the file has nothing in it and if so, it will make a placeholder
 # It will get rid of this placeholder once another real value has entered the file
@@ -33,15 +38,7 @@ def readhighscores():
         score_table = {}
     names = list(score_table.keys())
     scores = list(score_table.values())
-    if len(names) == 0:
-        names.append("placeholder")
-        scores.append(0)
-        print("\n-No scores found-\n")
-    elif len(names) != 0 and "placeholder" in names:
-        delete1 = names.index("placeholder")
-        delete2 = scores.index(0)
-        del names[delete1]
-        del scores[delete2]
+    names, scores, redo = check(names, scores)
     high.close()
     return names, scores
 
@@ -57,10 +54,25 @@ def displayscores(scores):
 
 
 def full_process(score, name):
-    names, scores = Filesaver.readhighscores()
-    score_table = Filesaver.savehighscore(score, name, names, scores)
-    Filesaver.displayscores(score_table)
+    names, scores = readhighscores()
+    score_table = savehighscore(score, name, names, scores)
+    names, scores, redo = check(names, scores)
+    if redo is True:
+        score_table = savehighscore(score, name, names, scores)
+    displayscores(score_table)
 
 
-
+def check(names, scores):
+    redo = False
+    if len(names) == 0:
+        names.append("placeholder")
+        scores.append(0)
+        print("\n-No scores found-\n")
+    elif len(names) != 0 and "placeholder" in names:
+        redo = True
+        delete1 = names.index("placeholder")
+        delete2 = scores.index(0)
+        del names[delete1]
+        del scores[delete2]
+    return names, scores, redo
 

@@ -125,12 +125,5 @@ def battling(enemy, player):
         elif battle_choice == 'Block':
             pass  # Need To Implement Block
 
-battling("","")
 
-
-
-
-
-
-
-
+battling("", "")

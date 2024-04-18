@@ -14,6 +14,7 @@ class Player(Creature.Creature):
         self.weapon = weapon
         self.armor = armor
         self.score = score
+
     # Will V: This function will display instruct.txt, which tells the user how to play
     def help(self):
         instruct = open("Instruct.txt", "r")
@@ -114,7 +115,7 @@ class Player(Creature.Creature):
 
                 else:
                     print(f"{user_ans}?..\n\tIncorrect..")
-                    slep(1.4)
+                    sleep(1.4)
                     print(f"The correct answer was {answer}..")
                     sleep(.98)
                     print("You feel your body weaken and your focus falters...")
@@ -148,7 +149,7 @@ class Player(Creature.Creature):
 
                 else:
                     print(f"{user_ans}?..\n\tIncorrect..")
-                    slep(1.4)
+                    sleep(1.4)
                     print(f"The correct answer was {answer}..")
                     sleep(.98)
                     print("You feel your body weaken and your focus falters...")
@@ -182,7 +183,7 @@ class Player(Creature.Creature):
 
                 else:
                     print(f"{user_ans}?..\n\tIncorrect..")
-                    slep(1.4)
+                    sleep(1.4)
                     print(f"The correct answer was {answer}..")
                     sleep(.98)
                     print("You feel your body weaken and your focus falters...")
