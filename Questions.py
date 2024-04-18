@@ -17,7 +17,7 @@ TFQ = {1: {" The \"int()\" function in Python can convert a string containing a 
 
 JEOPARDY = {1: {"In Python, this type of method is automatically called when an instance of a class is created.":
             "init"}, 2: {"This type of Python exception occurs when an invalid operation is performed on an object, "
-            "such as dividing by zero or accessing an index out of range.": "type error"}, 3:
+            "such as dividing by zero or accessing an index out of range.": "type error"}, 3:  # Change this error BAD QUESTION!
             {"a block of code which only runs when it is called": "function"}, 4: {"A loop based on a conditional":
             "while loop"}, 5: {"This syntax in Python is used to create a list through a for loop on a single line":
             "list comprehension"}}

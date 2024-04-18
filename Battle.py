@@ -1,35 +1,37 @@
 import time  # Nicholas: for pauses
 import random  # Nicholas: implement chance in moves
+
+import Creature
 import Questions
 import Player
-Option_battle_list = ['Attack', 'Block']
-Quiz_Types = ["MC", "JEOPARDY", "FITB", "TOF"]  # Nicholas: List of the quiz types for the if/else statements
-ehp = 50 # Nicholas: REPLACE WITH THE CLASS ENEMY HP
-php = 50 # Nicholas: REPLACE WITH THE CLASS PLAYER HP
-edmg = 1
-pdmg = 1
+Option_battle_list = ['Attack', 'Block', "Info", ""]
+Quiz_Types = ["MCQ", "JEOPARDY", "FITB", "TFQ"]  # Nicholas: List of the quiz types for the if/else statements
 
-rannum = random.randint(0,20) # Replace in the actual code with Player.hit_rolling
-if rannum == 20:
-    print("CRITICAL HIT")
-    time.sleep(2)
-    num = 3
-elif rannum >= 2:
-    print("The attack connects")
-    time.sleep(2)
-    num = 1
-else:
-    print("The attack misses")
-    time.sleep(2)
-    num = 2
+creature_object = Creature.Creature("Craig", 'Nothin',random.randint(50,90),12, 60)
+player_object = Player.Player("Pame",75,12, 101)
 
-def battling(enemy, player):
-    global ehp, php # Nicholas: REPLACE WITH THE CLASS ENEMY HP AND PLAYER HP
-    battle_choice = input(f'Choose what to do {Option_battle_list}: ').title()
-    while ehp > 0 and php > 0:  # Nicholas: code runs until player or enemy dies
+def assignment(p_obj, cr_obj):
+    global enemy_hp, player_hp, enemy_atk, player_atk, enemy_deff, player_deff
+    enemy_hp = cr_obj.hp
+    player_hp = p_obj.hp
+    enemy_atk = cr_obj.atk
+    player_atk = p_obj.atk
+    enemy_deff = cr_obj.deff * .01
+    player_deff = p_obj.deff * .01
 
-        while battle_choice not in Option_battle_list:  # runs until battle_choice is valid
-            battle_choice = input(f'Choose what to do {Option_battle_list}: ').title()
+
+assignment(player_object, creature_object)
+
+
+
+def battling(boss, Option_battle_list):
+    global enemy_hp, player_hp, enemy_atk, player_atk, enemy_deff, player_deff
+
+    battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
+    while enemy_hp > 0 and player_hp > 0:  # Nicholas: code runs until player or enemy dies
+
+        while battle_choice not in Option_battle_list[:2]:  # runs until battle_choice is valid
+            battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
 
         if battle_choice == 'Attack':
 
@@ -38,31 +40,73 @@ def battling(enemy, player):
                 for room in Quiz_Types:
                     print('[' + room[0] + ']' + room[1:] + ": ", end="")
                 move = input("\n\tInput What you would like to do (M/J/F/T): ").upper()
+                print()
 
                 for i in range(len(Quiz_Types)):  # Nicholas: Repurposed code form Gavin
                     if len(move) > 1:
                         if move == Quiz_Types[i][0:len(move)].upper():  # Checks if the Input is part of the answer
                             move = Quiz_Types[i]
-                            if move == "TOF":
-                                print("easy")
-                                ehp -= pdmg
+                            if move == "TFQ":
+                                success_option = player_object.attack("TFQ")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5*((player_atk) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk) * enemy_deff)/2
+                                    print("half")
 
 
 
-                            elif move == "MC":
-                                print("med")
-                                ehp -= pdmg + 1
-
+                            elif move == "MCQ":
+                                success_option = player_object.attack("MCQ")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk + 5) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5 * ((player_atk + 5) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk + 5) * enemy_deff) / 2
+                                    print("half")
 
                             elif move == "FITB":
-                                print("hard")
-                                # Player.atk("hard")
-                                ehp -= pdmg + 2
+                                success_option = player_object.attack("FITB")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk + 10) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5 * ((player_atk + 10) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk + 10) * enemy_deff) / 2
+                                    print("half")
 
                             elif move == "JEOPARDY":
-                                print("ntmare")
-                                # Player.atk("ntmare")
-                                ehp -= pdmg + 3
+                                success_option = player_object.attack("JEOPARDY")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5 * ((player_atk) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk) * enemy_deff) / 2
+                                    print("half")
 
 
                             else:
@@ -74,59 +118,103 @@ def battling(enemy, player):
                     elif len(move) == 1:
                         if move == Quiz_Types[i][0]:
                             move = Quiz_Types[i]
-                            if move == "TOF":
-                                print("easy")
-                                # Player.atk("easy")
-                                ehp -= pdmg
+                            if move == "TFQ":
+                                success_option = player_object.attack("TFQ")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5 * ((player_atk) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk) * enemy_deff) / 2
+                                    print("half")
 
 
-                            elif move == "MC":
-                                print("med")
-                                # Player.atk("med")
-                                ehp -= pdmg + 1
+                            elif move == "MCQ":
+                                success_option = player_object.attack("MCQ")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk + 5) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5 * ((player_atk + 5) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk + 5) * enemy_deff) / 2
+                                    print("half")
 
 
                             elif move == "FITB":
-                                print("hard")
-                                # Player.atk("hard")
-                                ehp -= pdmg + 2
-
+                                success_option = player_object.attack("FITB")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk + 10) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5 * ((player_atk + 10) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk + 10) * enemy_deff) / 2
+                                    print("half")
 
                             elif move == "JEOPARDY":
-                                print("ntmare")
-                                # Player.atk("ntmare")
-                                ehp -= pdmg + 3
-
+                                success_option = player_object.attack("JEOPARDY")
+                                if success_option == 0:
+                                    print("miss")
+                                    pass
+                                elif success_option == 1:
+                                    enemy_hp -= (player_atk + 15) * enemy_deff
+                                    print("normal")
+                                elif success_option == 3:
+                                    enemy_hp -= 1.5 * ((player_atk + 15) * enemy_deff)
+                                    print("Crit")
+                                else:
+                                    enemy_hp -= ((player_atk + 15) * enemy_deff) / 2
+                                    print("half")
 
 
                             else:
                                 print("How Did it not work")
+
                             good2go = True
+
             while not good2go:
-                if ehp <= 0:
-                    ehp = 0
-                    print(ehp)
-                    print(php)
-                elif php <= 0:
-                    php = 0
-                    print(ehp)
-                    print(php)
+                if enemy_hp <= 0:
+                    enemy_hp = 0
+                    print("Enemy Health:", int(enemy_hp))
+                    print("Your Health:", int(player_hp))
+                elif player_hp <= 0:
+                    player_hp = 0
+                    print("Enemy Health:", int(enemy_hp))
+                    print("Your Health:", int(player_hp))
             else:
-                php -= edmg
-                print(ehp)
-                print(php)
+                player_hp -= enemy_atk * player_deff  # BUFF ENEMY - Implement the randomness
+                if enemy_hp <= 0:
+                    enemy_hp = 0
+                elif player_hp <= 0:
+                    player_hp = 0
+                else:
+                    pass
+                print("Enemy Health:", int(enemy_hp))
+                print("Your Health:", int(player_hp))
                 print()
-                battle_choice = input(f'Choose what to do {Option_battle_list}: ').title()
+            battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
 
         elif battle_choice == 'Block':
             print("UH OH YOU BLOCKED")
-            battle_choice = input(f'Choose what to do {Option_battle_list}: ').title()
+            battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
 
-        elif battle_choice == 'Block':
-            pass  # Need To Implement Block
 
-battling("","")
 
+battling(False, Option_battle_list)
 
 
 
