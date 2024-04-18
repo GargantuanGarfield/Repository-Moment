@@ -9,18 +9,10 @@ from time import sleep
 
 class Player(Creature.Creature):
 
-    def __init__(self, name='', atk=0, deff=0, hp=0, status='chilling', weapon='', armor='', score=''):
-        super().__init__(name, atk, deff, hp, status)
+    def __init__(self, name='', atk=0, deff=0, hp=0,  weapon='', armor=''):
+        super().__init__(self, name, atk, deff, hp)
         self.weapon = weapon
         self.armor = armor
-        self.score = score
-
-    # Will V: This function will display instruct.txt, which tells the user how to play
-    def help(self):
-        instruct = open("Instruct.txt", "r")
-        for line in instruct:
-            print(line.strip())
-            sleep(.025)
 
     def __str__(self):
         return f"You WHIP out your left hand with the body mirror implant and gaze at yourself... weird fella.. and/or fillet"
@@ -59,11 +51,11 @@ class Player(Creature.Creature):
                 # Input
                 print("\t\t-- True or false? -- ATTACK\n")
                 print(f"(T/F) {question}")
-                user_ans = input('\t - ').lower().strip
+                user_ans = input('\t - ').lower().strip()
 
                 # Correct/Incorrect answer hit calculations
-                if user_ans == 't' or user_ans == answer[0:len(user_ans)]:
-                    print(f"{answer}?.. \n\t== Correct!==")
+                if user_ans == answer[0].lower() or user_ans == answer[0:len(user_ans)]:
+                    print(f"{user_ans}?.. \n\t== Correct!==")
                     sleep(.3)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
@@ -103,7 +95,6 @@ class Player(Creature.Creature):
                     else:
                         print(f"{num + 1}.) {bad_choices[num]}")
                         question_choices.remove(bad_choices[num])
-                print(answer)
                 user_ans = input('\t - ').lower().strip()
 
                 # Correct/Incorrect answer hit calculations
@@ -227,6 +218,7 @@ def hit_rolling(status):
             print("The attack misses")
             sleep(2)
             return 0
+
     else:
         if rannum >= 18:
             print("The attack connects")
@@ -240,5 +232,4 @@ def hit_rolling(status):
             print("The attack misses")
             sleep(2)
             return 0
-
 
