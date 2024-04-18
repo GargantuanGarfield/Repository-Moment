@@ -1,8 +1,7 @@
+# Will Vanderploeg
 import pickle
 import os
-
-
-
+# Sorts, then saves the highscore in a binary file
 def savehighscore(score, name, names, scores_list):
     try:
         high = open("Highscores.dat", "wb")
@@ -23,7 +22,9 @@ def savehighscore(score, name, names, scores_list):
     except FileNotFoundError:
         print("File not found")
 
-
+# Reads a binary file to retrieve past highscores
+# It will detect if the file has nothing in it and if so, it will make a placeholder
+# It will get rid of this placeholder once another real value has entered the file
 def readhighscores():
     high = open("Highscores.dat", 'rb')
     try:
@@ -53,6 +54,12 @@ def displayscores(scores):
     for value in scores:
         counter += 1
         print(f"{counter}: {value} -- {scores[value]}")
+
+
+def full_process(score, name):
+    names, scores = Filesaver.readhighscores()
+    score_table = Filesaver.savehighscore(score, name, names, scores)
+    Filesaver.displayscores(score_table)
 
 
 

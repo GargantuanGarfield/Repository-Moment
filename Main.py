@@ -4,6 +4,4 @@
 # Main function for game
 
 
-
 def main():
-    print("balls")

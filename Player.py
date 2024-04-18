@@ -14,6 +14,12 @@ class Player(Creature.Creature):
         self.weapon = weapon
         self.armor = armor
         self.score = score
+    # Will V: This function will display instruct.txt, which tells the user how to play
+    def help(self):
+        instruct = open("Instruct.txt", "r")
+        for line in instruct:
+            print(line.strip())
+            sleep(.025)
 
     def __str__(self):
         return f"You WHIP out your left hand with the body mirror implant and gaze at yourself... weird fella.. and/or fillet"
@@ -233,4 +239,5 @@ def hit_rolling(status):
             print("The attack misses")
             sleep(2)
             return 0
+
 

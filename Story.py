@@ -5,6 +5,8 @@
 import random
 from time import sleep
 import Main
+import Filesaver
+
 
 # Will Vanderploeg:
 # Displays the intro one line at a time using the intro.txt file
@@ -13,14 +15,14 @@ def intro():
     print(f"\n\nThe year is {year}")
     sleep(.87)
     intro = open("intro.txt", "r")
-    for i in range(12):
-        print(intro.readline().strip())
+    for line in intro:
+        print(line.strip())
         sleep(.87)
     intro.close()
 
 
 # Gavin M.
-def game_over():
+def game_over(score, name):
     death = """\t\t░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 \t\t░   ░░░░░░   ░░░░░     ░░░░░░   ░░░░░   ░░░░░░░      ░░░░░   ░         ░      ░░░░
 \t\t▒▒   ▒▒▒▒   ▒▒▒▒   ▒▒▒▒   ▒▒▒   ▒▒▒▒▒   ▒▒▒▒▒▒▒   ▒▒▒   ▒▒   ▒   ▒▒▒▒▒▒▒   ▒▒▒   ▒
@@ -46,6 +48,7 @@ def game_over():
             Main.main()
             break
         elif again == 'n':
+            Filesaver.full_process(score, name)
             quit()
         else:
             print('huh?')
