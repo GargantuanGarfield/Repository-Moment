@@ -9,8 +9,8 @@ from time import sleep
 
 class Player(Creature.Creature):
 
-    def __init__(self, name='', atk=0, deff=0, hp=0, weapon='', armor=''):
-        super().__init__(name, atk, deff, hp)
+    def __init__(self, name='', atk=0, deff=0, hp=0,  weapon='', armor=''):
+        super().__init__(self, name, atk, deff, hp)
         self.weapon = weapon
         self.armor = armor
 
@@ -19,7 +19,7 @@ class Player(Creature.Creature):
 
     # prints player info
     def stats(self):
-        super().stats()
+        super().stats(self)
         print(f"Equipped Weapon - {self.weapon}\n\tEquipped armor - {self.armor}")
 
     #ATTACK METHOD
@@ -51,11 +51,11 @@ class Player(Creature.Creature):
                 # Input
                 print("\t\t-- True or false? -- ATTACK\n")
                 print(f"(T/F) {question}")
-                user_ans = input('\t - ').lower().strip
+                user_ans = input('\t - ').lower().strip()
 
                 # Correct/Incorrect answer hit calculations
-                if user_ans == 't' or user_ans == answer[0:len(user_ans)]:
-                    print(f"{answer}?.. \n\t== Correct!==")
+                if user_ans == answer[0].lower() or user_ans == answer[0:len(user_ans)]:
+                    print(f"{user_ans}?.. \n\t== Correct!==")
                     sleep(.3)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
@@ -95,7 +95,6 @@ class Player(Creature.Creature):
                     else:
                         print(f"{num + 1}.) {bad_choices[num]}")
                         question_choices.remove(bad_choices[num])
-                print(answer)
                 user_ans = input('\t - ').lower().strip()
 
                 # Correct/Incorrect answer hit calculations
@@ -107,7 +106,7 @@ class Player(Creature.Creature):
 
                 else:
                     print(f"{user_ans}?..\n\tIncorrect..")
-                    slep(1.4)
+                    sleep(1.4)
                     print(f"The correct answer was {answer}..")
                     sleep(.98)
                     print("You feel your body weaken and your focus falters...")
@@ -141,7 +140,7 @@ class Player(Creature.Creature):
 
                 else:
                     print(f"{user_ans}?..\n\tIncorrect..")
-                    slep(1.4)
+                    sleep(1.4)
                     print(f"The correct answer was {answer}..")
                     sleep(.98)
                     print("You feel your body weaken and your focus falters...")
@@ -175,7 +174,7 @@ class Player(Creature.Creature):
 
                 else:
                     print(f"{user_ans}?..\n\tIncorrect..")
-                    slep(1.4)
+                    sleep(1.4)
                     print(f"The correct answer was {answer}..")
                     sleep(.98)
                     print("You feel your body weaken and your focus falters...")
@@ -219,6 +218,7 @@ def hit_rolling(status):
             print("The attack misses")
             sleep(2)
             return 0
+
     else:
         if rannum >= 18:
             print("The attack connects")
@@ -233,5 +233,3 @@ def hit_rolling(status):
             sleep(2)
             return 0
 
-penis = Player('balls')
-print(penis.name)
