@@ -9,8 +9,8 @@ from time import sleep
 
 class Player(Creature.Creature):
 
-    def __init__(self, name='', atk=0, deff=0, hp=0, status='chilling', weapon='', armor=''):
-        super().__init__(name, atk, deff, hp, status)
+    def __init__(self, name='', atk=0, deff=0, hp=0, weapon='', armor=''):
+        super().__init__(name, atk, deff, hp)
         self.weapon = weapon
         self.armor = armor
 
@@ -19,7 +19,7 @@ class Player(Creature.Creature):
 
     # prints player info
     def stats(self):
-        super().stats(self)
+        super().stats()
         print(f"Equipped Weapon - {self.weapon}\n\tEquipped armor - {self.armor}")
 
     #ATTACK METHOD
@@ -233,3 +233,5 @@ def hit_rolling(status):
             sleep(2)
             return 0
 
+penis = Player('balls')
+print(penis.name)

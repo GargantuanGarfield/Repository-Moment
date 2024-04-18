@@ -3,7 +3,7 @@
 # 4/16/24
 # Creature Superclass
 import random
-
+from time import sleep
 class Creature:
     def __init__(self, name='', type='', atk=0, deff=0, hp=0, status=''):
         self.name = name
@@ -17,7 +17,7 @@ class Creature:
         return f'This is a townsperson taken over by a {self.name} parasite, its a {self.type} type parasite'
 
     def stats(self):
-        print(f"{self.name}:\n" + '-' * len(self.name) + f"\n\tatk - {self.atk}\n\tdef - {self.deff}\n\thp - {self.hp}")
+        print(f" {self.name}:\n" + '-' * (len(self.name)+ 3) + f"\n\tatk - {self.atk}\n\tdef - {self.deff}\n\thp - {self.hp}")
 
     def block(self):
         print("The enemy readies itself..")
