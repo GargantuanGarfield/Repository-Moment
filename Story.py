@@ -10,7 +10,7 @@ def intro():
     intro = open("intro.txt", "r")
     for i in range(12):
         print(intro.readline())
-        sleep(1)
+        sleep(.87)
     intro.close()
 
 intro()
