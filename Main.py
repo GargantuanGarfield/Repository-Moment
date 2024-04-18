@@ -9,12 +9,18 @@ import Story
 import Shop
 from time import sleep
 import os
-from colorama import Fore, Back, Style
+from colorama import Fore, Back
+
 
 def main():
     for line in title_card.splitlines():
-        print(f"{Style.BRIGHT}{line}")
+        print(f"{line}")
         sleep(.45)
+    print('\n\n')
+    player = Player.Player('YOUR MOTHER', 4, 5, 100)
+    Shop.shop(player)
+    player.stats()
+
 
 
 title_card = """         ,-.-.  ,--.-,,-,--,     ,----.                   ,----.           ,---.             ___           .=-.-. ,--,---.  
