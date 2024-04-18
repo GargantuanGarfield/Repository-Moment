@@ -9,10 +9,11 @@ from time import sleep
 
 class Player(Creature.Creature):
 
-    def __init__(self, name='', atk=0, deff=0, hp=0, status='chilling', weapon='', armor=''):
+    def __init__(self, name='', atk=0, deff=0, hp=0, status='chilling', weapon='', armor='', score=''):
         super().__init__(name, atk, deff, hp, status)
         self.weapon = weapon
         self.armor = armor
+        self.score = score
 
     def __str__(self):
         return f"You WHIP out your left hand with the body mirror implant and gaze at yourself... weird fella.. and/or fillet"
@@ -62,7 +63,7 @@ class Player(Creature.Creature):
 
                 else:
                     print(f"{user_ans}?..\n\tIncorrect..")
-                    slep(1.4)
+                    sleep(1.4)
                     print(f"The correct answer was {answer}..")
                     sleep(.98)
                     print("You feel your body weaken and your focus falters...")

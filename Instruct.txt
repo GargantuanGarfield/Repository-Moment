@@ -1,0 +1,18 @@
+How to play the game:
+
+    Attacks:
+        - Choose the attack option during battle
+        - Each level of difficulty corresponds to a style of question
+            - True-False == Easy
+            - Multiple choice == Medium
+            - Fill in the blank == Hard
+            - Jeopardy == NIGHTMARE >:)
+
+        - Higher difficulty == more damage
+        - If you fail to answer a question, your likelihood to miss increases
+        - You have a chance to hit a critical hit
+        - Weapons will increase your attack power
+
+
+    Items:
+        - 

@@ -9,7 +9,6 @@ def savehighscore(score, name, names, scores_list):
         scores_list.append(score)
         names.append(name)
         score_table_temp = {names[i]: scores_list[i] for i in range(len(names))}
-        print(scores_list)
         scores_list.sort(reverse=True)
         scores_table = {}
         for value in scores_list:
@@ -19,22 +18,36 @@ def savehighscore(score, name, names, scores_list):
         pickle.dump(scores_table, high)
         high.close()
         print("\nFile Saved\n")
+        return scores_table
+
     except FileNotFoundError:
         print("File not found")
 
 
 def readhighscores():
     high = open("Highscores.dat", 'rb')
-    score_table = pickle.load(high)
+    try:
+        score_table = pickle.load(high)
+    except EOFError:
+        score_table = {}
     names = list(score_table.keys())
-    values = list(score_table.values())
+    scores = list(score_table.values())
+    if len(names) == 0:
+        names.append("placeholder")
+        scores.append(0)
+        print("\n-No scores found-\n")
+    elif len(names) != 0 and "placeholder" in names:
+        delete1 = names.index("placeholder")
+        delete2 = scores.index(0)
+        del names[delete1]
+        del scores[delete2]
     high.close()
-    return score_table, names, values
+    return names, scores
 
 
 def displayscores(scores):
     os.system('cls')
-    print("High Scores")
+    print("High Scores:")
     print("________________________")
     counter = 0
     for value in scores:
@@ -42,16 +55,5 @@ def displayscores(scores):
         print(f"{counter}: {value} -- {scores[value]}")
 
 
-values = []
-names = []
 
-
-while True:
-    name = input("What is your name?:\n")
-    score = int(input("What is your score?:\n"))
-    scores, names, values = readhighscores()
-    savehighscore(score, name, names, values)
-    scores, names, values = readhighscores()
-    print(scores)
-    displayscores(scores)
 

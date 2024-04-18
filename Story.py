@@ -6,10 +6,10 @@ from time import sleep
 def intro():
     year = random.randrange(224, 8427)
     print(f"\n\nThe year is {year}")
-    sleep(1)
+    sleep(.87)
     intro = open("intro.txt", "r")
     for i in range(12):
-        print(intro.readline())
+        print(intro.readline().strip())
         sleep(.87)
     intro.close()
 
