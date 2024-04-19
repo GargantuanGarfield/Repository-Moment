@@ -6,7 +6,6 @@ import Boss
 import Player
 import Creature
 import Story
-import 
 
 def main():
  pass

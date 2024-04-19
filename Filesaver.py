@@ -43,8 +43,9 @@ def readhighscores():
     return names, scores
 
 
-def displayscores(scores):
-    os.system('cls')
+def displayscores(scores, clear=True):
+    if clear is True:
+        os.system('cls')
     print("High Scores:")
     print("________________________")
     counter = 0
@@ -53,13 +54,16 @@ def displayscores(scores):
         print(f"{counter}: {value} -- {scores[value]}")
 
 
-def full_process(score, name):
+def full_process(score, name, return_table=False):
     names, scores = readhighscores()
     score_table = savehighscore(score, name, names, scores)
     names, scores, redo = check(names, scores)
     if redo is True:
         score_table = savehighscore(score, name, names, scores)
-    displayscores(score_table)
+    if return_table is True:
+        return score_table
+    else:
+        displayscores(score_table)
 
 
 def check(names, scores):

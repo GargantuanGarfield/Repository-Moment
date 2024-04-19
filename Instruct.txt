@@ -36,7 +36,7 @@ How to play the game:
 
     Scoring:
         - Each question answered correctly will gain you score
-            - Critical hit increase that gain even more
+        - Critical hit increase that gain even more
         - Missing attacks will detract from your score
         - The more difficult the question, the more points you get
         - The same is true for how many points will be deducted
