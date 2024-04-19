@@ -1,0 +1,42 @@
+How to play the game:
+
+    General instructions:
+        - Enter your name at the beginning, this will be saved to the highscore file later
+        - When selecting actions, use the corresponding number for inputting
+        - When selecting answers, type out the word (This is true for multiple choice as well. DO NOT INPUT THE NUMBER!)
+        - Don't die
+            - If you do, enter y if you want to start again, and n if you don't
+
+
+    Attacks:
+        - Choose the attack option during battle
+        - Each level of difficulty corresponds to a style of question
+            - True-False == Easy
+            - Multiple choice == Medium
+            - Fill in the blank == Hard
+            - Jeopardy == NIGHTMARE >:)
+
+        - Higher difficulty == more damage
+        - If you fail to answer a question, your likelihood to miss increases
+        - You have a chance to hit a critical hit
+        - Weapons will increase your attack power
+
+
+    Items:
+        - Items can be bought at the Network Chuck shop
+        - Items can increase attack and defense
+        - Items can also heal you
+
+    Status:
+        - I uh.... forgor
+
+    Inspect:
+        - Displays stats of enemy creature
+
+
+    Scoring:
+        - Each question answered correctly will gain you score
+        - Critical hit increase that gain even more
+        - Missing attacks will detract from your score
+        - The more difficult the question, the more points you get
+        - The same is true for how many points will be deducted
