@@ -4,7 +4,7 @@ import random  # Nicholas: implement chance in moves
 import Creature
 import Questions
 import Player
-Option_battle_list = ['Attack', 'Block', "Info", ""]
+Option_battle_list = ['Attack', 'Block', "Info", "Examine"]
 Quiz_Types = ["MCQ", "JEOPARDY", "FITB", "TFQ"]  # Nicholas: List of the quiz types for the if/else statements
 
 creature_object = Creature.Creature("Craig", 'Nothin',random.randint(50,90),12, 60)
@@ -27,11 +27,11 @@ assignment(player_object, creature_object)
 def battling(boss, Option_battle_list):
     global enemy_hp, player_hp, enemy_atk, player_atk, enemy_deff, player_deff
 
-    battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
+    battle_choice = input(f'Choose what to do {Option_battle_list[:4]}: ').title()
     while enemy_hp > 0 and player_hp > 0:  # Nicholas: code runs until player or enemy dies
 
-        while battle_choice not in Option_battle_list[:2]:  # runs until battle_choice is valid
-            battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
+        while battle_choice not in Option_battle_list[:4]:  # runs until battle_choice is valid
+            battle_choice = input(f'Choose what to do {Option_battle_list[:4]}: ').title()
 
         if battle_choice == 'Attack':
 
@@ -195,6 +195,7 @@ def battling(boss, Option_battle_list):
                     player_hp = 0
                     print("Enemy Health:", int(enemy_hp))
                     print("Your Health:", int(player_hp))
+
             else:
                 player_hp -= enemy_atk * player_deff  # BUFF ENEMY - Implement the randomness
                 if enemy_hp <= 0:
@@ -206,11 +207,28 @@ def battling(boss, Option_battle_list):
                 print("Enemy Health:", int(enemy_hp))
                 print("Your Health:", int(player_hp))
                 print()
-            battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
+            battle_choice = input(f'Choose what to do {Option_battle_list[:4]}: ').title()
+
 
         elif battle_choice == 'Block':
-            print("UH OH YOU BLOCKED")
-            battle_choice = input(f'Choose what to do {Option_battle_list[:2]}: ').title()
+            if player_object.block():
+                player_hp -= (enemy_atk * player_deff) / 1.25
+                print()
+            else:
+                player_hp -= (enemy_atk * player_deff)
+
+            print("Enemy Health:", int(enemy_hp))
+            print("Your Health:", int(player_hp))
+            print()
+
+            battle_choice = input(f'Choose what to do {Option_battle_list[:4]}: ').title()
+
+        elif battle_choice == 'Info':
+            pass
+            # player_object.help()
+        elif battle_choice == 'Examine':
+            creature_object.stats()
+
 
 
 
