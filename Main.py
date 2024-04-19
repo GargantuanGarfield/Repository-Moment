@@ -1,8 +1,11 @@
 #
-# Co-coded by pretty much everyone. Mainly Gavin I think maybe idk
-# 4/17/24
+# GAVIN
+# 4/idek anymore/24
 # Main function for game
-import
-
+import Boss
+import Player
+import Creature
+import Story
 
 def main():
+ pass

@@ -7,15 +7,24 @@ from Questions import TFQ, MCQ, FITB, JEOPARDY, choices
 import Creature
 from time import sleep
 
+
 class Player(Creature.Creature):
 
-    def __init__(self, name='', atk=0, deff=0, hp=0,  weapon='', armor=''):
+    def __init__(self, name='', atk=0, deff=0, hp=0,  weapon='', armor='', score=0):
         super().__init__(self, name, atk, deff, hp)
         self.weapon = weapon
         self.armor = armor
+        self.score = score
 
     def __str__(self):
         return f"You WHIP out your left hand with the body mirror implant and gaze at yourself... weird fella.. and/or fillet"
+
+    # Will V: This function will display instruct.txt, which tells the user how to play
+    def help(self):
+        instruct = open("Instruct.txt", "r")
+        for line in instruct:
+            print(line.strip())
+            sleep(.025)
 
     # prints player info
     def stats(self):
@@ -55,12 +64,14 @@ class Player(Creature.Creature):
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0].lower() or user_ans == answer[0:len(user_ans)]:
+                    self.score += 10
                     print(f"{user_ans}?.. \n\t== Correct!==")
                     sleep(.3)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
+                    self.score -= 10
                     print(f"{user_ans}?..\n\tIncorrect..")
                     sleep(1.4)
                     print(f"The correct answer was {answer}..")
@@ -99,12 +110,14 @@ class Player(Creature.Creature):
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0:len(user_ans)]:
+                    self.score += 15
                     print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
+                    self.score -= 15
                     print(f"{user_ans}?..\n\tIncorrect..")
                     sleep(1.4)
                     print(f"The correct answer was {answer}..")
@@ -133,12 +146,14 @@ class Player(Creature.Creature):
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0:len(user_ans)]:
+                    self.score += 20
                     print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
+                    self.score -= 20
                     print(f"{user_ans}?..\n\tIncorrect..")
                     sleep(1.4)
                     print(f"The correct answer was {answer}..")
@@ -167,12 +182,14 @@ class Player(Creature.Creature):
 
                 # Correct/Incorrect answer hit calculations
                 if user_ans == answer[0:len(user_ans)]:
+                    self.score += 30
                     print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True) # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
                     return success
 
                 else:
+                    self.score -= 30
                     print(f"{user_ans}?..\n\tIncorrect..")
                     sleep(1.4)
                     print(f"The correct answer was {answer}..")
