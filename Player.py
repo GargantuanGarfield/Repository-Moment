@@ -174,9 +174,8 @@ class Player(Creature.Creature):
                 print("A podium with your name on it appears in front of you and the zombie Trebeck stares at you as if to say..\n")
                 sleep(2)
                 print("Python for 300..", end=" ")
-                sleep(.9)
-                print(f"Okay {self.name}, I ask you..\n")
                 sleep(1.5)
+                print(f"\nQuestion: ")
                 print(question)
                 user_ans = input("\tWhat is? - ").lower().strip()
 
