@@ -224,8 +224,7 @@ def battling(boss, Option_battle_list):
             battle_choice = input(f'Choose what to do {Option_battle_list[:4]}: ').title()
 
         elif battle_choice == 'Info':
-            pass
-            # player_object.help()
+            player_object.help()
         elif battle_choice == 'Examine':
             creature_object.stats()
 
