@@ -7,9 +7,6 @@ Option_battle_list = ['Attack', 'Block', "Info", "Inspect"]
 Boss_battle_List = ['Attack', 'Block', "Special Attack",]
 Quiz_Types = ["MCQ", "JEOPARDY", "FITB", "TFQ"]  # Nicholas: List of the quiz types for the if/else statements
 
-creature_object = Creature.Creature("Craig", 'Nothin',random.randint(50,90),12, 60)
-player_object = Player.Player("Pame",75,12, 101)
-
 def assignment(p_obj, cr_obj):
     global enemy_hp, player_hp, enemy_atk, player_atk, enemy_deff, player_deff
     enemy_hp = cr_obj.hp
@@ -18,9 +15,6 @@ def assignment(p_obj, cr_obj):
     player_atk = p_obj.atk
     enemy_deff = cr_obj.deff * .01
     player_deff = p_obj.deff * .01
-
-
-assignment(player_object, creature_object)
 
 
 
@@ -211,7 +205,7 @@ def battling(boss, Option_battle_list): # Nicholas: Boss should be boolean, noth
 
         elif battle_choice == 'Block':
             if player_object.block():
-                player_hp -= (enemy_atk * player_deff) / 1.25
+                player_hp -= (enemy_atk * player_deff) * .2
                 print()
             else:
                 player_hp -= (enemy_atk * player_deff)

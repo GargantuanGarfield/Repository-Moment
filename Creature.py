@@ -5,7 +5,7 @@
 import random
 
 class Creature:
-    def __init__(self, hp, name, type, atk, deff, status=''):
+    def __init__(self, name, type, atk, deff, hp, status=''):
         self.name = name
         self.type = type
         self.atk = atk
@@ -13,8 +13,6 @@ class Creature:
         self.hp = hp
         self.status = status
 
-    def __str__(self):
-        return f'This is a townsperson taken over by a {self.name} parasite, its a {self.type} type parasite'
 
     def stats(self):
         print(f"{self.name}:\n" + '-' * len(self.name) + f"\n\tatk - {self.atk}\n\tdef - {self.deff}\n\thp - {self.hp}")

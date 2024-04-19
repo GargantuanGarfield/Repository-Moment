@@ -28,8 +28,7 @@ def main():
         print(line)
         sleep(.34)
 
-    print("\nEnter character: [GC / WR]")
-    char = input("\t- ").upper().strip()
+    char = ''
     pl_name = input("Enter the characters name\n\t- ").title().strip()
     if char == 'GC' or char == 'GC'[0:len(char)]:
         player_character = Player.Player(pl_name, 120, 5, 60)
@@ -42,8 +41,10 @@ def main():
         sleep(1.2)
         if char == 'GC' or char == 'GC'[0:len(char)]:
             player_character = Player.Player(pl_name, 120, 5, 80)
+            break
         elif char == 'WR' or char == 'WR'[0:len(char)]:
             player_character = Player.Player(pl_name, 75, 12, 120)
+            break
 
     print("Creating Character...")
     sleep(1.2)
@@ -59,17 +60,22 @@ def main():
     sleep(1.2)
     print("Huh?")
     sleep(.2)
-    if player_character.hp <= 0: #runs game over if player dead
-        Story.game_over()
-
 
     # Assigning the enemy object
-    enemy_obj = Creature.Creature(30, 'Craig', 'Operator', random.randint(50,90), 12)
+    enemy_obj = Creature.Creature(30, 'Craig', 'Operator', random.randint(50, 90), 12)
+    os.system('cls')
     print("ENCOUNTER")
 
     # Sets up battle
     Battle.assignment(enemy_obj, player_character)
     Battle.battling(False, Battle.Option_battle_list)
+
+    print(player_character.hp)
+    if player_character.hp <= 0: #runs game over if player dead
+        Story.game_over()
+
+
+
 
     #Shop and battle 2 dialogue
     print("You find a strange building in portland..")
@@ -132,7 +138,7 @@ def main():
 
     # Sets up battle
     Battle.assignment(enemy_obj, player_character)
-    Battle.battling(False, Battle.Option_battle_list)
+    BossBattle.battling(True, Battle.Option_battle_list)
 
     if player_character.hp <= 0:  # runs game over if player dead
         Story.game_over()

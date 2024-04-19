@@ -15,7 +15,7 @@ def intro():
     sleep(1)
     intro = open("intro.txt", "r")
     for i in range(12):
-        print(intro.readline())
+        print('| ' + intro.readline())
         sleep(.87)
     intro.close()
 
@@ -58,9 +58,8 @@ def game_over():
 # Opens story dialogue leading into the first player battle.
 def battle1():
     battle1 = open('battle1-portland.txt', 'r')
-    print('=' * len(battle1.readline(1)))
     for i in range(5):
-        print('| ' + battle1.readline() + ' |')
+        print('| ' + battle1.readline())
         sleep(.87)
     battle1.close()
 
@@ -68,9 +67,8 @@ def battle1():
 # Opens story dialogue leading into the second player battle.
 def battle2():
     battle2 = open('battle2-thieves', 'r')
-    print('=' * len(battle2.readline(1)))
     for i in range(8):
-        print(battle2.readline())
+        print('| ' + battle2.readline())
         sleep(.87)
     battle2.close()
 
@@ -78,19 +76,18 @@ def battle2():
 # Opens story dialogue leading into the third player battle.
 def battle3():
     battle3_pt1 = open('battle3-hazbinhotel', 'r')
-    battle3_pt2 = open('battle3-hazbinhotel-p2', 'r')
-    print('=' * len(battle3_pt1.readline(1)))
+    battle3_pt2 = open('battle3-hazbinhotel-pt2', 'r')
+
     for i in range(8):
-        print('| ' + battle3_pt1.readline() + ' |')
+        print('| ' + battle3_pt1.readline())
         sleep(.87)
         os.system('cls')
 
     for line in hazbin.Hazbin.splitlines():
         print(line)
         sleep(.1)
-    print('=' * len(battle3_pt2.readline(1)))
     for i in range(8):
-        print('| ' + battle3_pt2.readline() + ' |')
+        print('| ' + battle3_pt2.readline())
         sleep(.87)
 
     battle3_pt1.close()

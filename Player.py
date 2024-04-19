@@ -16,8 +16,6 @@ class Player(Creature.Creature):
         self.armor = armor
         self.score = score
 
-    def __str__(self):
-        return f"You WHIP out your left hand with the body mirror implant and gaze at yourself... weird fella.. and/or fillet"
 
     # Will V: This function will display instruct.txt, which tells the user how to play
     def help(self):
