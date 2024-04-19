@@ -5,7 +5,7 @@
 import random
 from time import sleep
 class Creature:
-    def __init__(self, hp, name, type, atk, deff, status):
+    def __init__(self, hp, name, type, atk, deff, status=''):
         self.name = name
         self.type = type
         self.atk = atk

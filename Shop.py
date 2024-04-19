@@ -1,6 +1,7 @@
 # Liam
 import random
 import Items
+from time import sleep
 
 
 def shop(player):
@@ -78,10 +79,10 @@ def shop(player):
 
 
             else:
-                print("\nHey MAN... that's not a real item ... Don't waste our bandwidth ...")
+                print("\nHey LAN... that's not a real item ... Don't waste our bandwidth ... the SOHO router can't take it")
 
         except ValueError:
-            print("\nWoah MAN... that's not very 00111010 00110011 of you... ")
+            print("\nWoah LAN... that's not very 00111010 00110011 of you... ")
             print("(did you mean to type the item number?)\n")
 
 

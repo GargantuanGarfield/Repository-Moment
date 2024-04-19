@@ -9,8 +9,8 @@ from time import sleep
 
 class Player(Creature.Creature):
 
-    def __init__(self, name, atk, deff, hp, weapon='', armor=''):
-        super().__init__(hp, name, atk, deff)
+    def __init__(self, name, atk, deff, hp=100, weapon='', armor=''):
+        super().__init__(self, name, atk, deff, hp)
         self.weapon = weapon
         self.armor = armor
 
@@ -20,7 +20,7 @@ class Player(Creature.Creature):
     # prints player info
     def stats(self):
         super().stats()
-        print(f"Equipped Weapon - {self.weapon}\n\tEquipped armor - {self.armor}")
+        print(f"\tEquipped Weapon - {self.weapon}\n\tEquipped armor - {self.armor}")
 
     #ATTACK METHOD
     def attack(self, diff):
