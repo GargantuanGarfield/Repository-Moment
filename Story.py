@@ -7,6 +7,7 @@ from time import sleep
 import Main
 import hazbin
 
+
 # Will Vanderploeg:
 # Displays the intro one line at a time using the intro.txt file
 def intro():
@@ -18,6 +19,7 @@ def intro():
         print(intro.readline())
         sleep(.87)
     intro.close()
+
 
 # Liam
 # Opens story dialogue leading into the first player battle.
@@ -75,6 +77,7 @@ def outro():
         print(outro.readline())
         sleep(.87)
     outro.close()
+
 
 # Gavin M.
 def game_over():
