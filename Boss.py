@@ -8,7 +8,7 @@ import Creature
 
 class Boss(Creature.Creature):
 
-    def __init__(self, name, atk, deff, hp, status, love):
+    def __init__(self, name, atk, deff, hp, status='', love=''):
         super().__init__(name, atk, deff, hp, status)
         self.love = love
 

@@ -16,12 +16,11 @@ def intro():
     intro = open("intro.txt", "r")
     for i in range(12):
         print('| ' + intro.readline())
-        sleep(.87)
+        sleep(2)
     intro.close()
 
 # Gavin M.
 def game_over():
-    import Main
     death = """\t\t░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 \t\t░   ░░░░░░   ░░░░░     ░░░░░░   ░░░░░   ░░░░░░░      ░░░░░   ░         ░      ░░░░
 \t\t▒▒   ▒▒▒▒   ▒▒▒▒   ▒▒▒▒   ▒▒▒   ▒▒▒▒▒   ▒▒▒▒▒▒▒   ▒▒▒   ▒▒   ▒   ▒▒▒▒▒▒▒   ▒▒▒   ▒
@@ -40,12 +39,14 @@ def game_over():
     while True:
         if again == 'y':
             print("You feel a stange surging of determi--")
-            sleep(.8)
-            print("\tEmpowerment..", end=" ")
-            sleep(1)
-            print("Anyway lets try again.")
-            Main.main()
-            break
+            sleep(1.8)
+            print("\t-Empowerment..")
+            sleep(4)
+            print("Too bad :(")
+            print("yoore literally dead..", end=' ')
+            sleep(2)
+            print('L')
+            quit()
         elif again == 'n':
             quit()
         else:
@@ -60,7 +61,7 @@ def battle1():
     battle1 = open('battle1-portland.txt', 'r')
     for i in range(5):
         print('| ' + battle1.readline())
-        sleep(.87)
+        sleep(2)
     battle1.close()
 
 
@@ -69,7 +70,7 @@ def battle2():
     battle2 = open('battle2-thieves', 'r')
     for i in range(8):
         print('| ' + battle2.readline())
-        sleep(.87)
+        sleep(2)
     battle2.close()
 
 
@@ -80,15 +81,15 @@ def battle3():
 
     for i in range(8):
         print('| ' + battle3_pt1.readline())
-        sleep(.87)
-        os.system('cls')
+        sleep(2)
+    os.system('cls')
 
     for line in hazbin.Hazbin.splitlines():
         print(line)
         sleep(.1)
     for i in range(8):
         print('| ' + battle3_pt2.readline())
-        sleep(.87)
+        sleep(2)
 
     battle3_pt1.close()
     battle3_pt2.close()
@@ -99,7 +100,7 @@ def battle4():
     battle4 = open('battle4-boss', 'r')
     for i in range(13):
         print(battle4.readline())
-        sleep(.87)
+        sleep(2)
     battle4.close()
 
 # Outro dialogue
@@ -107,7 +108,7 @@ def outro():
     outro = open('outro', 'r')
     for i in range(14):
         print(outro.readline())
-        sleep(.87)
+        sleep(2)
     outro.close()
 
 
