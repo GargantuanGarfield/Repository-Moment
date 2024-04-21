@@ -8,24 +8,19 @@ import Creature
 
 class Boss(Creature.Creature):
 
-    def __init__(self, name, atk, deff, hp, status, love):
-        super().__init__(name, atk, deff, hp, status)
+    def __init__(self, name, atk, deff, hp, status='', love=''):
+        super().__init__(self, name, atk, deff, hp, status)
         self.love = love
 
-    def __str__(self):
-        print("You stare at the boss...")
-        sleep(3)
-        return "It doesn't seem very friendly"
-
     def stats(self):
-        print(f"{self.name}\n{'-' * len(self.name)}\n\tAtk - UNMEASURABLE\n\tdef - WAY TOO MUCH\n\tHP - HES LITERALLY IMMORTAL\n\tStatus - ROYALLY PISSED OFF\n\n\tLove - NOT Lookin great gonna be honest,\n\t\t"
+        print(f"The PYTHON - Syed\n{'-' * 17}\n\tAtk - UNMEASURABLE\n\tdef - WAY TOO MUCH\n\tHP - HES LITERALLY IMMORTAL\n\tStatus - ROYALLY PISSED OFF\n\n\tLove - NOT Lookin great gonna be honest,\n\t\t"
               f"  it might just hurt less to give up now.\n\t\t  Im sorry fella and/or fillet")
 
     def attack(self):
         print(f"{self.name} pulls back for a great swing..")
         sleep(1.2)
 
-        #Hit success calculation
+        # Hit success calculation
         rannum = random.randrange(0, 21)
         if rannum >= 18:
             print("CRITICAL HIT")

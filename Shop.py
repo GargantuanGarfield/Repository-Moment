@@ -84,5 +84,6 @@ def shop(player):
         except ValueError:
             print("\nWoah LAN... that's not very 00111010 00110011 of you... ")
             print("(did you mean to type the item number?)\n")
+    sleep(2)
 
 

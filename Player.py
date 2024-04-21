@@ -6,11 +6,12 @@ import random
 from Questions import TFQ, MCQ, FITB, JEOPARDY, choices
 import Creature
 from time import sleep
+import os
 
 
 class Player(Creature.Creature):
 
-    def __init__(self, name='', atk=0, deff=0, hp=0,  weapon='', armor='', score=0):
+    def __init__(self, name='', atk=0, deff=0, hp=0,  weapon={'name': '', 'atk': 0, 'effect': 'DAMAGE'}, armor={'name': '', 'armor': 0, 'effect': 'ARMOR'}, score=0):
         super().__init__(self, name, atk, deff, hp)
         self.weapon = weapon
         self.armor = armor
@@ -18,11 +19,13 @@ class Player(Creature.Creature):
 
 
     # Will V: This function will display instruct.txt, which tells the user how to play
-    def help(self):
+    def HELP(self):
         instruct = open("Instruct.txt", "r")
+        os.system('cls')
         for line in instruct:
             print(line.strip())
             sleep(.025)
+
 
     # prints player info
     def stats(self):
@@ -66,6 +69,7 @@ class Player(Creature.Creature):
                     print(f"{user_ans}?.. \n\t== Correct!==")
                     sleep(.3)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
+                    self.score = rolling_check(success, self.score)
                     return success
 
                 else:
@@ -77,6 +81,7 @@ class Player(Creature.Creature):
                     print("You feel your body weaken and your focus falters...")
                     sleep(1.5)
                     success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
+                    self.score = rolling_check(success, self.score)
                     return success
 
             # Medium difficulty question setup, prompt and checking
@@ -94,7 +99,7 @@ class Player(Creature.Creature):
 
                 #Question Formatting and input
 
-                print(question_choices)
+
                 print("\t\t-- Multiple Choice -- ATTACK\n")
                 print(question)
                 rannum = random.randint(1, 4)
@@ -112,6 +117,7 @@ class Player(Creature.Creature):
                     print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
+                    self.score = rolling_check(success, self.score)
                     return success
 
                 else:
@@ -123,6 +129,7 @@ class Player(Creature.Creature):
                     print("You feel your body weaken and your focus falters...")
                     sleep(1.5)
                     success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
+                    self.score = rolling_check(success, self.score)
                     return success
 
             # HARD difficulty question setup, prompt and checking
@@ -148,6 +155,7 @@ class Player(Creature.Creature):
                     print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True)  # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
+                    self.score = rolling_check(success, self.score)
                     return success
 
                 else:
@@ -159,6 +167,7 @@ class Player(Creature.Creature):
                     print("You feel your body weaken and your focus falters...")
                     sleep(1.5)
                     success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
+                    self.score = rolling_check(success, self.score)
                     return success
 
 
@@ -183,6 +192,7 @@ class Player(Creature.Creature):
                     print(f"{answer}?.. \n\t== Correct! ==")
                     sleep(1.5)
                     success = hit_rolling(True) # checks if the move hits, and return 0 for miss, 1 for hit, and 3 for crit
+                    self.score = rolling_check(success, self.score)
                     return success
 
                 else:
@@ -194,6 +204,7 @@ class Player(Creature.Creature):
                     print("You feel your body weaken and your focus falters...")
                     sleep(1.5)
                     success = hit_rolling(False) # checks if the move hits, and return 0 for miss, 1 for hit, and 2 for graze
+                    self.score = rolling_check(success, self.score)
                     return success
 
         # If Difficulty is invalid
@@ -208,6 +219,7 @@ class Player(Creature.Creature):
         rannum = random.randrange(0, 21)
         if rannum <= 17:
             print("You blocked the attack")
+            print("   Damage reduced")
             return True
         else:
             print("The attack breaks through! OW")
@@ -247,3 +259,12 @@ def hit_rolling(status):
             sleep(2)
             return 0
 
+
+def rolling_check(output, score):
+    if output == 0:
+        score -= 10
+    elif output == 1:
+        score += 10
+    elif output == 3:
+        score += 20
+    return score

@@ -3,6 +3,7 @@
 # 4/16/24
 # Creature Superclass
 import random
+from time import sleep
 
 class Creature:
     def __init__(self, name, type, atk, deff, hp, status=''):
