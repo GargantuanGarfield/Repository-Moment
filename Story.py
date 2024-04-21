@@ -6,6 +6,7 @@ import random
 from time import sleep
 import os
 import hazbin
+import Filesaver
 
 # Will Vanderploeg:
 # Displays the intro one line at a time using the intro.txt file
@@ -20,7 +21,7 @@ def intro():
     intro.close()
 
 # Gavin M.
-def game_over():
+def game_over(score, name):
     death = """\t\t░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 \t\t░   ░░░░░░   ░░░░░     ░░░░░░   ░░░░░   ░░░░░░░      ░░░░░   ░         ░      ░░░░
 \t\t▒▒   ▒▒▒▒   ▒▒▒▒   ▒▒▒▒   ▒▒▒   ▒▒▒▒▒   ▒▒▒▒▒▒▒   ▒▒▒   ▒▒   ▒   ▒▒▒▒▒▒▒   ▒▒▒   ▒
@@ -38,16 +39,30 @@ def game_over():
     print()
     while True:
         if again == 'y':
-            print("You feel a stange surging of determi--")
+            print("You feel a strange surging of determi--")
             sleep(1.8)
             print("\t-Empowerment..")
-            sleep(4)
-            print("Too bad :(")
-            print("yoore literally dead..", end=' ')
             sleep(2)
+            score_table = Filesaver.full_process(score, name, True)
+            count = 5
+            for time in range(5):
+                os.system("cls")
+                print(f"Continuing in: {count}")
+                Filesaver.displayscores(score_table, False)
+                sleep(1)
+                count -= 1
+            os.system('cls')
+            sleep(1.5)
+            print("Too bad :(")
+            sleep(.75)
+            print("you\'re literally dead..", end=' ')
+            sleep(4)
             print('L')
+            sleep(2)
             quit()
         elif again == 'n':
+            Filesaver.full_process(score, name)
+            sleep(5)
             quit()
         else:
             print('huh?')

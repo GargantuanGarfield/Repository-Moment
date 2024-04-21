@@ -194,7 +194,7 @@ def battling(boss, Option_battle_list, p_obj, cr_obj):
                     print("Your Health:", int(player_hp))
 
             else:
-                player_hp -= enemy_atk * (player_deff + (p_obj.weapon['armor'] * .01))  # BUFF ENEMY - Implement the randomness
+                player_hp -= enemy_atk * (player_deff + (p_obj.weapon['atk'] * .01))  # BUFF ENEMY - Implement the randomness
                 if enemy_hp <= 0:
                     enemy_hp = 0
                 elif player_hp <= 0:
@@ -210,10 +210,10 @@ def battling(boss, Option_battle_list, p_obj, cr_obj):
 
         elif battle_choice == 'Block':
             if p_obj.block():
-                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['armor'] * .01))) * .2
+                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['atk'] / 100))) * .2
                 print()
             else:
-                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['armor'] * .01)))
+                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['atk'] / 100)))
 
             print("\nEnemy Health:", int(enemy_hp))
             print("Your Health:", int(player_hp))

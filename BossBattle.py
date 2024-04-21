@@ -199,7 +199,7 @@ def battling(boss, Option_battle_list, p_obj, cr_obj):
                 Boss_options.pop(move)
                 if move == 'Attack':
                     cr_obj.attack()
-                elif move = 'Block':
+                elif move == 'Block':
                     cr_obj.block()
                 else:
                     cr_obj.spec_atk

@@ -6,6 +6,7 @@ import random
 
 import Battle
 import Boss
+import BossBattle
 import Player
 import Creature
 import Story
@@ -74,7 +75,7 @@ def main():
     Battle.battling(False, Battle.Option_battle_list, player_character, enemy_obj)
 
     if player_character.hp <= 0: #runs game over if player dead
-        Story.game_over()
+        Story.game_over(player_character.score, pl_name)
 
 
 
@@ -91,7 +92,7 @@ def main():
     Shop.shop(player_character)
 
     os.system('cls')
-    enemy_obj = Creature.Creature('CHEEF THEEF - Neurichlas', 'EPIC', random.randint(110, 140), 18, 60)
+    enemy_obj = Creature.Creature('CHEEF THEEF - Neurichlas', 'EPIC', random.randint(95, 105), 18, 60)
     Story.battle2()
     input("\n - Press ENTER button to continue - \n\t\t")
 
@@ -99,7 +100,7 @@ def main():
     Battle.battling(False, Battle.Option_battle_list, player_character, enemy_obj)
 
     if player_character.hp <= 0: #runs game over if player dead
-        Story.game_over()
+        Story.game_over(player_character.score, pl_name)
 
     os.system('cls')
     # Increases user stats
@@ -112,7 +113,7 @@ def main():
     player_character.hp += 15
 
     # Shop and battle 3 dialogue
-    enemy_obj = Creature.Creature('The Amalgam', 'EPIC', random.randint(150, 190), 14, 100)
+    enemy_obj = Creature.Creature('The Amalgam', 'EPIC', random.randint(100, 110), 14, 100)
     os.system('cls')
     print('You find another shop..')
     sleep(1.2)
@@ -127,7 +128,7 @@ def main():
     Battle.battling(False, Battle.Option_battle_list, player_character, enemy_obj)
 
     if player_character.hp <= 0:  # runs game over if player dead
-        Story.game_over()
+        Story.game_over(player_character.score, pl_name)
 
     os.system('cls')
     # Increases user stats
@@ -140,7 +141,7 @@ def main():
     player_character.hp += 30
 
     # BOSS BATTLE!!!!!
-    enemy_obj = Boss.Boss('The PYTHON - Syed', 250, 20, 150)
+    enemy_obj = Boss.Boss('The PYTHON - Syed', 125, 20, 150)
     os.system('cls')
     print('You find network chuck\'s swap shop shop..')
     sleep(1.2)
@@ -155,7 +156,7 @@ def main():
     BossBattle.battling(True, Battle.Option_battle_list, player_character, enemy_obj)
 
     if player_character.hp <= 0:  # runs game over if player dead
-        Story.game_over()
+        Story.game_over(player_character.score, pl_name)
 
     os.system('cls')
 
