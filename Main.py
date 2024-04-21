@@ -159,6 +159,7 @@ def main():
         Story.game_over(player_character.score, pl_name)
 
     os.system('cls')
+    # Plays outro, then saves and displays the highscores
     Story.outro()
     Filesaver.full_process(player_character.score, pl_name)
     sleep(5)
