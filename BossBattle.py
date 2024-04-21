@@ -1,8 +1,7 @@
 import time  # Nicholas: for pauses
 import random  # Nicholas: implement chance in moves
 
-import Boss
-import Player
+
 Option_battle_list = ['Attack', 'Block', "Info", "Inspect"]
 Boss_battle_List = ['Attack', 'Block', "Special Attack", 'Attack', 'Attack', 'Attack', 'Block', 'Block', 'Block', 'Block', 'Special Attack', 'Special Attack']
 Quiz_Types = ["MCQ", "JEOPARDY", "FITB", "TFQ"]  # Nicholas: List of the quiz types for the if/else statements
@@ -21,7 +20,7 @@ def assignment(p_obj, cr_obj):
 # PLayer can choose to attack, block, see the enemy stats, or see the help screen
 # Enemy always attacks
 
-def battling(boss, Option_battle_list, p_obj, cr_obj):
+def battling(Option_battle_list, p_obj, cr_obj):
     assignment(p_obj, cr_obj)
     global enemy_hp, player_hp, enemy_atk, player_atk, enemy_deff, player_deff # all the global
 

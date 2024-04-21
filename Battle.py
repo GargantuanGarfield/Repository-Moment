@@ -21,7 +21,7 @@ def assignment(p_obj, cr_obj):
 # PLayer can choose to attack, block, see the enemy stats, or see the help screen
 # Enemy always attacks
 # Coded by NIcholas and GAVIN and WILL yeah 👍
-def battling(boss, Option_battle_list, p_obj, cr_obj):
+def battling(Option_battle_list, p_obj, cr_obj):
     assignment(p_obj, cr_obj)
     global enemy_hp, player_hp, enemy_atk, player_atk, enemy_deff, player_deff # all the global
 
@@ -194,7 +194,7 @@ def battling(boss, Option_battle_list, p_obj, cr_obj):
                     print("Your Health:", int(player_hp))
 
             else:
-                player_hp -= enemy_atk * (player_deff + (p_obj.weapon['atk'] * .01))  # BUFF ENEMY - Implement the randomness
+                player_hp -= enemy_atk * (player_deff + (p_obj.weapon['atk'] / 200))  # BUFF ENEMY - Implement the randomness
                 if enemy_hp <= 0:
                     enemy_hp = 0
                 elif player_hp <= 0:
@@ -210,10 +210,10 @@ def battling(boss, Option_battle_list, p_obj, cr_obj):
 
         elif battle_choice == 'Block':
             if p_obj.block():
-                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['atk'] / 100))) * .2
+                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['atk'] / 250))) * .2
                 print()
             else:
-                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['atk'] / 100)))
+                player_hp -= (enemy_atk * (player_deff + (p_obj.weapon['atk'] / 200)))
 
             print("\nEnemy Health:", int(enemy_hp))
             print("Your Health:", int(player_hp))
@@ -236,7 +236,7 @@ def battling(boss, Option_battle_list, p_obj, cr_obj):
 
 
     # Assigns the player hp to what they have after the battle
-    p_obj.hp = player_hp
+    p_obj.hp = int(player_hp)
 
 
 

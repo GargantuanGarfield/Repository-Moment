@@ -10,8 +10,6 @@ def savehighscore(score, name, names, scores_list):
         scores_list.append(score)
         names.append(name)
         score_table_temp = {names[i]: scores_list[i] for i in range(len(names))}
-        print(score_table_temp)
-        print(scores_list)
         scores_list.sort(reverse=True)
         scores_table = {}
         for value in scores_list:
@@ -20,7 +18,6 @@ def savehighscore(score, name, names, scores_list):
                     scores_table[item] = value
         pickle.dump(scores_table, high)
         high.close()
-        print("\nFile Saved\n")
         return scores_table
 
     except FileNotFoundError:

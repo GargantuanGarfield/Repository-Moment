@@ -56,7 +56,7 @@ def game_over(score, name):
             print("Too bad :(")
             sleep(.75)
             print("you\'re literally dead..", end=' ')
-            sleep(4)
+            sleep(2)
             print('L')
             sleep(2)
             quit()
