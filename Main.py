@@ -38,12 +38,14 @@ def main():
         print("\nEnter character: [GC / WR]")
         char = input("\t- ").upper().strip()
         sleep(1.2)
-        if char == 'GC' or char == 'GC'[0:len(char)]:
+        if char == 'GC':
             player_character = Player.Player(pl_name, 135, 5, 80)
             break
-        elif char == 'WR' or char == 'WR'[0:len(char)]:
+        elif char == 'WR':
             player_character = Player.Player(pl_name, 100, 12, 120)
             break
+        else:
+            print("\nnice try...\n")
 
 
 
