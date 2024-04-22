@@ -1,10 +1,8 @@
 import time  # Nicholas: for pauses
 import random  # Nicholas: implement chance in moves
-
 import Creature
 import Player
 Option_battle_list = ['Attack', 'Block', "Info", "Inspect"]
-Boss_battle_List = ['Attack', 'Block', "Special Attack",]
 Quiz_Types = ["MCQ", "JEOPARDY", "FITB", "TFQ"]  # Nicholas: List of the quiz types for the if/else statements
 
 creature_object = Creature.Creature("Craig", 'Nothin',random.randint(50,90),12, 60)
@@ -232,13 +230,6 @@ def battling(boss, Option_battle_list): # Nicholas: Boss should be boolean, noth
             creature_object.stats()  # Stats from creature
             print()
             battle_choice = input(f'Choose what to do {Option_battle_list[:4]}: ').title()
-
-
-
-
-
-
-
 
 
 
